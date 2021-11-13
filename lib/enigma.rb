@@ -79,7 +79,9 @@ class Enigma
   end
 
   # Helper Methods (should be able to fit in a module)
-
+  # note : figure out a way later to make these return
+  # arrays containing variables with our appropriate
+  # values - will require arguments on #assign_shifts
   def assign_keys(key)
     @key_a = key[0..1]
     @key_b = key[1..2]
@@ -118,13 +120,17 @@ class Enigma
   # Elementary encrypt method, will figure out encryption
   # first, then move to adding other required functional elements
   def encrypt(message, key, date)
-    @message = message
+    @message = message.downcase
     @key = key # Possible we don't even need this
     @offsets = date # Or this
 
     assign_keys(key)
     assign_offsets(date)
     assign_shifts
+
+    # Likely going to need a nested loop for actual encryption
+
+    #
 
 
   end
