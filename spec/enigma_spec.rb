@@ -38,4 +38,16 @@ RSpec.describe Enigma do
     expect(@enigma.offset_setup?).to be true
   end
 
+  it 'can store message via #encrypt' do
+    expect(@enigma.message).to eq("hello world")
+  end
+
+  it 'can store key via #encrypt' do
+    expect(@enigma.key).to eq("02715")
+  end
+
+  it 'can store date via #encrypt' do
+    expect(@enigma.offset).to eq ("111321")
+  end
+
 end
