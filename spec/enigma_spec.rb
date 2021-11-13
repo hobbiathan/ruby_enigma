@@ -100,26 +100,6 @@ RSpec.describe Enigma do
       expect(@enigma.offsets).to eq ("111321")
     end
 
-    it 'can assign keys a..d using @key within #encrypt' do
-      @enigma.encrypt("hello world", "02715", "111321")
-      expected_array = ["02", "27", "71", "15"]
 
-      expect(@enigma.assign_key_check?).to eq(expected_array)
-    end
-
-    it 'can assign offsets a..d using @date^2 within #encrypt' do
-      @enigma.encrypt("hello world", "02715", "111321")
-      expected_array = ["5", "0", "4", "1"]
-
-      expect(@enigma.assign_offset_check?).to eq(expected_array)
-    end
-
-    # Should I really be writing the expected values as strings?
-    it 'can assign shifts a..d within #encrypt' do
-      @enigma.encrypt("hello world", "02715", "111321")
-      expected_array = ["7", "27", "75", "16"]
-
-      expect(@enigma.assign_shift_check?).to eq(expected_array)
-    end
   end
 end
