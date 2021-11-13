@@ -2,6 +2,8 @@ class Enigma
 
 
   # TODO:
+  # REFACTOR #ENCRYPT
+
   # (Possibly) move all keys/offset attributes into a module
   # Move #key_setup?/#offset_setup? into helper modules
   # Create #encrypt helper methods for autogenerating keys/date values
@@ -16,6 +18,7 @@ class Enigma
     @offsets = nil
     @char_set = ["a".."z"].to_a << " "
 
+    # lol
     key_a = nil
     key_b = nil
     key_c = nil
@@ -77,6 +80,12 @@ class Enigma
 
   # Helper Methods (should be able to fit in a module)
 
+  def assign_keys(key)
+    @key_a = key[0..1]
+    @key_b = key[1..2]
+    @key_c = key[2..3]
+    @key_d = key[3..4]
+  end
 
 
   # Actual Enigma functionality methods
