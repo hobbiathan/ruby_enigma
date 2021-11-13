@@ -40,6 +40,20 @@ RSpec.describe Enigma do
     end
   end
 
+  context 'helper methods' do
+
+    it 'can #assign_keys(key)' do
+      key = "02715"
+      @enigma.assign_keys(key)
+      expected_array = ["02", "27", "71", "15"]
+
+      expect(@enigma.assign_key_check?).to eq(expected_array)
+    end
+
+
+
+  end
+
   context 'object methods' do
 
     it 'returns nil array via #assign_key_check?' do
