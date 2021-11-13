@@ -122,51 +122,9 @@ class Enigma
     @key = key # Possible we don't even need this
     @offsets = date # Or this
 
-
-    # Note: Definitely break the logic below into Helpers
-
-    # Assign keys according to @key (should figure out better names)
-    # Possible break this into helper method, returns array that gets stored as
-    # an enigma attribute instead of having 4 keys attributes
-
-    # assign_keys(key)
-    # have it return key variables in an array
-    @key_a = key[0..1]
-    @key_b = key[1..2]
-    @key_c = key[2..3]
-    @key_d = key[3..4]
-
-    # Assign offsets
-    # Definitely would want to break this into a module
-    # Possible it's be better to keep these all as integers
-
-    # assign_offsets(date)
-    # Have it return offset variables within an array
-    date_squared = date.to_i ** 2
-    # Not DRY, but I'll refactor it later
-    date_squared = date_squared.to_s
-
-    # require 'pry'; binding.pry
-    @offset_a = date_squared[-4].to_s
-    @offset_b = date_squared[-3].to_s
-    @offset_c = date_squared[-2].to_s
-    @offset_d = date_squared[-1].to_s
-
-
-    # assign_shifts(key_arr, offset_arr)
-    # would take key array and offset array as arguments
-    # returns array with shift variables
-
-    @shift_a = @key_a.to_i + @offset_a.to_i
-    @shift_b = @key_b.to_i + @offset_b.to_i
-    @shift_c = @key_c.to_i + @offset_c.to_i
-    @shift_d = @key_d.to_i + @offset_d.to_i
-
-    # Also not DRY for shit
-    @shift_a = @shift_a.to_s
-    @shift_b = @shift_b.to_s
-    @shift_c = @shift_c.to_s
-    @shift_d = @shift_d.to_s
+    assign_keys(key)
+    assign_offsets(date)
+    assign_shifts
 
 
   end
