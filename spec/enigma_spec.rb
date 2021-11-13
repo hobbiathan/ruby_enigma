@@ -41,6 +41,8 @@ RSpec.describe Enigma do
   end
 
   context 'object methods' do
+
+    end
     it 'can store message via #encrypt' do
       @enigma.encrypt("hello world", "02715", "111321")
       expect(@enigma.message).to eq("hello world")
@@ -55,6 +57,11 @@ RSpec.describe Enigma do
       @enigma.encrypt("hello world", "02715", "111321")
       expect(@enigma.offsets).to eq ("111321")
     end
-  end
 
-end
+    it 'can assign keys a..d using @key within #encrypt' do
+      @enigma.encrypt("hello world", "02715", "111321")
+      expected_array = ["07", "27", "71", "15"]
+
+      expect(@enigma.assign_key_check?).to eq(expected_array)
+    end
+  end
