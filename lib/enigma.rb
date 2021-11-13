@@ -1,17 +1,47 @@
 class Enigma
 
-  attr_reader :message, :keys, :offsets, :char_set
-  def initialize
+  attr_reader :message, :key, :offsets, :char_set
 
+  def initialize
     @message = nil
-    @keys = nil
+    @key = nil
     @offsets = nil
     @char_set = ["a".."z"].to_a << " "
 
+    key_a = nil
+    key_b = nil
+    key_c = nil
+    key_d = nil
 
+    offset_a = nil
+    offset_b = nil
+    offset_c = nil
+    offset_d = nil
   end
 
+  # Messy but better than creating 4 unnecessary attr_readers
+  def key_setup?
+    if @key_a == @key_b &&
+       @key_b == @key_c &&
+       @key_c == @key_d &&
+       @key_d == nil
+      true
+    else
+      false
+    end
+  end
 
+  # if statement is pretty long
+  def offset_setup?
+    if @offset_a == @offset_b &&
+       @offset_b == @offset_c &&
+       @offset_c == @offset_d &&
+       @offset_d == nil
+      true
+    else
+      false
+    end
+  end
 
 
 end
