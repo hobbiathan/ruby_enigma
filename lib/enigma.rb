@@ -89,6 +89,16 @@ class Enigma
 
     # Assign offsets
     # Definitely would want to break this into a module
+
+    date_squared = date.to_i ** 2
+    # Not DRY, but I'll refactor it later
+    date_squared = date_squared.to_s
+
+    # require 'pry'; binding.pry
+    @offset_a = date_squared[-4].to_s
+    @offset_b = date_squared[-3].to_s
+    @offset_c = date_squared[-2].to_s
+    @offset_d = date_squared[-1].to_s
   end
 
 
