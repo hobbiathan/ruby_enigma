@@ -49,7 +49,7 @@ RSpec.describe Enigma do
 
     it 'returns nil array via #assign_offset_check?' do
       expected_array = [nil, nil, nil, nil]
-      expect(@enigma.assign_offset_check).to eq(expected_array)
+      expect(@enigma.assign_offset_check?).to eq(expected_array)
     end
 
     end
