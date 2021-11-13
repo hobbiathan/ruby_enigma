@@ -58,6 +58,14 @@ RSpec.describe Enigma do
       expect(@enigma.assign_offset_check?).to eq(expected_array)
     end
 
+    it 'can #assign_shifts' do
+      @enigma.encrypt("hello world", "02715", "111321")
+      @enigma.assign_shifts
+      expected_array = ["7", "27", "75", "16"]
+
+      expect(@enigma.assign_shift_check?).to eq(expected_array)
+    end
+
 
 
   end
