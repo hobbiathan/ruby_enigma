@@ -61,10 +61,17 @@ class Enigma
     [@key_a, @key_b, @key_c, @key_d]
   end
 
+  # Same thing as method above, but for offset attributes
+  def assign_offset_check?
+    [@offset_a, @offset_b, @offset_c, @offset_d]
+  end
 
   # Helper Methods (should be able to fit in a module)
 
-  # Actual functional methods
+
+
+  # Actual Enigma functionality methods
+
   # Elementary encrypt method, will figure out encryption
   # first, then move to adding other required functional elements
   def encrypt(message, key, date)
@@ -73,10 +80,15 @@ class Enigma
     @offsets = date # Or this
 
     # Assign keys according to @key (should figure out better names)
+    # Possible break this into helper method, returns array that gets stored as
+    # an enigma attribute instead of having 4 keys attributes
     @key_a = key[0..1]
     @key_b = key[1..2]
     @key_c = key[2..3]
     @key_d = key[3..4]
+
+    # Assign offsets
+    # Definitely would want to break this into a module
   end
 
 
