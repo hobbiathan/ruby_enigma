@@ -40,8 +40,24 @@ RSpec.describe Enigma do
     end
   end
 
-  context 'helper methods' do
+  context 'checker methods' do
+    it 'returns nil array via #assign_key_check?' do
+      expected_array = [nil, nil, nil, nil]
+      expect(@enigma.assign_key_check?).to eq(expected_array)
+    end
 
+    it 'returns nil array via #assign_offset_check?' do
+      expected_array = [nil, nil, nil, nil]
+      expect(@enigma.assign_offset_check?).to eq(expected_array)
+    end
+
+    it 'returns nil array via #assign_shift_check?' do
+      expected_array = [nil, nil, nil, nil]
+      expect(@enigma.assign_shift_check?).to eq(expected_array)
+    end
+  end
+
+  context 'helper methods' do
     it 'can #assign_keys(key)' do
       key = "02715"
       @enigma.assign_keys(key)
@@ -65,28 +81,9 @@ RSpec.describe Enigma do
 
       expect(@enigma.assign_shift_check?).to eq(expected_array)
     end
-
-
-
   end
 
   context 'object methods' do
-
-    it 'returns nil array via #assign_key_check?' do
-      expected_array = [nil, nil, nil, nil]
-      expect(@enigma.assign_key_check?).to eq(expected_array)
-    end
-
-    it 'returns nil array via #assign_offset_check?' do
-      expected_array = [nil, nil, nil, nil]
-      expect(@enigma.assign_offset_check?).to eq(expected_array)
-    end
-
-    it 'returns nil array via #assign_shift_check?' do
-      expected_array = [nil, nil, nil, nil]
-      expect(@enigma.assign_shift_check?).to eq(expected_array)
-    end
-
 
     it 'can store message via #encrypt' do
       @enigma.encrypt("hello world", "02715", "111321")
