@@ -25,6 +25,11 @@ class Enigma
     offset_b = nil
     offset_c = nil
     offset_d = nil
+
+    shift_a = nil
+    shift_b = nil
+    shift_c = nil
+    shift_d = nil
   end
 
   # Checker methods
@@ -66,6 +71,10 @@ class Enigma
     [@offset_a, @offset_b, @offset_c, @offset_d]
   end
 
+  def assign_shift_check?
+    [@shift_a, @shift_b, @shift_c, @shift_d]
+  end
+
   # Helper Methods (should be able to fit in a module)
 
 
@@ -79,9 +88,14 @@ class Enigma
     @key = key # Possible we don't even need this
     @offsets = date # Or this
 
+
+    # Note: Definitely break the logic below into Helpers
+
     # Assign keys according to @key (should figure out better names)
     # Possible break this into helper method, returns array that gets stored as
     # an enigma attribute instead of having 4 keys attributes
+
+    #assign_keys(key)
     @key_a = key[0..1]
     @key_b = key[1..2]
     @key_c = key[2..3]
@@ -89,7 +103,9 @@ class Enigma
 
     # Assign offsets
     # Definitely would want to break this into a module
+    # Possible it's be better to keep these all as integers
 
+    #assign_offsets(date)
     date_squared = date.to_i ** 2
     # Not DRY, but I'll refactor it later
     date_squared = date_squared.to_s
@@ -99,6 +115,8 @@ class Enigma
     @offset_b = date_squared[-3].to_s
     @offset_c = date_squared[-2].to_s
     @offset_d = date_squared[-1].to_s
+
+
   end
 
 
