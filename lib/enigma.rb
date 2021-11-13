@@ -99,6 +99,19 @@ class Enigma
     @offset_d = date_squared[-1].to_s
   end
 
+  def assign_shifts
+    @shift_a = @key_a.to_i + @offset_a.to_i
+    @shift_b = @key_b.to_i + @offset_b.to_i
+    @shift_c = @key_c.to_i + @offset_c.to_i
+    @shift_d = @key_d.to_i + @offset_d.to_i
+
+    # Also not DRY for shit
+    @shift_a = @shift_a.to_s
+    @shift_b = @shift_b.to_s
+    @shift_c = @shift_c.to_s
+    @shift_d = @shift_d.to_s
+  end
+
 
   # Actual Enigma functionality methods
 
