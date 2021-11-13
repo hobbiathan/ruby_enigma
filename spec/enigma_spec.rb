@@ -19,7 +19,7 @@ RSpec.describe Enigma do
   end
 
   it 'initializes empty keys' do
-    expect(@enigma.keys).to eq(nil)
+    expect(@enigma.key).to eq(nil)
   end
 
   it 'initializes empty offsets' do
@@ -30,5 +30,12 @@ RSpec.describe Enigma do
     expect(@enigma.message).to eq(nil)
   end
 
+  it 'initializes nil a..d keys via #key_setup?' do
+    expect(@enigma.key_setup?).to be true
+  end
+
+  it 'initializes nil a..d offsets via #offset_setup?' do
+    expect(@enigma.offset_setup?).to be true
+  end
 
 end
