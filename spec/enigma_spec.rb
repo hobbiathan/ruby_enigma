@@ -87,5 +87,12 @@ RSpec.describe Enigma do
       expect(@enigma.assign_offset_check?).to eq(expected_array)
     end
 
+    # Should I really be writing the expected values as strings?
+    it 'can assign shifts a..d within #encrypt' do
+      @enigma.encrypt("hello world", "02715", "111321")
+      expected_array = ["7", "27", "75", "16"]
+
+      expect(@enigma.assign_shift_check?).to eq(expected_array)
+    end
   end
 end
