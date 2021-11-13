@@ -75,11 +75,11 @@ RSpec.describe Enigma do
       expect(@enigma.assign_key_check?).to eq(expected_array)
     end
 
-    xit 'can assign offsets a..d using @date^2 within #encrypt' do
+    it 'can assign offsets a..d using @date^2 within #encrypt' do
       @enigma.encrypt("hello world", "02715", "111321")
-      expected_array = []
+      expected_array = ["5", "0", "4", "1"]
 
-      expect(@enigma.assign_offset_check?)
+      expect(@enigma.assign_offset_check?).to eq(expected_array)
     end
 
   end
