@@ -60,7 +60,7 @@ RSpec.describe Enigma do
 
     it 'can assign keys a..d using @key within #encrypt' do
       @enigma.encrypt("hello world", "02715", "111321")
-      expected_array = ["07", "27", "71", "15"]
+      expected_array = ["02", "27", "71", "15"]
 
       expect(@enigma.assign_key_check?).to eq(expected_array)
     end
