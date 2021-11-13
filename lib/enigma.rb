@@ -2,6 +2,7 @@ class Enigma
 
   attr_reader :message, :key, :offsets, :char_set
 
+  # @offsets is the current date
   def initialize
     @message = nil
     @key = nil
@@ -19,6 +20,7 @@ class Enigma
     offset_d = nil
   end
 
+  # Probably make into their own module later
   # Messy but better than creating 4 unnecessary attr_readers
   def key_setup?
     if @key_a == @key_b &&
@@ -43,5 +45,17 @@ class Enigma
     end
   end
 
+  # Helper Methods (should be able to fit in a module)
+
+
+  # Actual functional methods
+
+  def encrypt(message, key, date)
+    @message = message
+
+
+    @key = key
+    @offsets = date
+  end
 
 end
