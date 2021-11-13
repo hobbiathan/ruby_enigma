@@ -42,6 +42,11 @@ RSpec.describe Enigma do
 
   context 'object methods' do
 
+    it 'returns nil array via #assign_key_check?' do
+      expected_array = [nil, nil, nil, nil]
+      expect(@enigma.assign_key_check?).to eq(expected_array)
+    end
+
     end
     it 'can store message via #encrypt' do
       @enigma.encrypt("hello world", "02715", "111321")
@@ -64,4 +69,12 @@ RSpec.describe Enigma do
 
       expect(@enigma.assign_key_check?).to eq(expected_array)
     end
+
+    xit 'can assign offsets a..d using @date^2 within #encrypt' do
+      @enigma.encrypt("hello world", "02715", "111321")
+      expected_array = []
+
+      expect(@enigma.assign_offset_check?)
+    end
+
   end
