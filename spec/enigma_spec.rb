@@ -50,6 +50,14 @@ RSpec.describe Enigma do
       expect(@enigma.assign_key_check?).to eq(expected_array)
     end
 
+    it 'can #assign_offsets(date)' do
+      date = "111321"
+      @enigma.assign_offsets(date)
+      expected_array = ["5", "0", "4", "1"]
+
+      expect(@enigma.assign_offset_check?).to eq(expected_array)
+    end
+
 
 
   end
