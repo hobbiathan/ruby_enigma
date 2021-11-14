@@ -7,6 +7,11 @@ RSpec.describe Enigma do
     @enigma = Enigma.new
   end
 
+  it 'can #generate_key with leading 0 of length 5' do
+    key = @enigma.generate_key
+    expect(key.length).to eq(5)
+  end
+
   it 'can #assign_keys(key)' do
     key = "02715"
     expected = @enigma.assign_keys(key)
