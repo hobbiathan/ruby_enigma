@@ -12,6 +12,11 @@ RSpec.describe Enigma do
     expect(key.length).to eq(5)
   end
 
+  it 'can #generate_date' do
+    date = @enigma.generate_date
+    expect(date).to eq("111321")
+  end
+
   it 'can #assign_keys(key)' do
     key = "02715"
     expected = @enigma.assign_keys(key)
