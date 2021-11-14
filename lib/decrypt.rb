@@ -23,4 +23,4 @@ new_file.close
 
 
 
-puts "Created '#{ARGV[1]}' with the key #{key} and date #{date}"
+puts "Created '#{ARGV[1]}' with the key '#{key}' and date '#{date}'"
