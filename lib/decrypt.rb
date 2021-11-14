@@ -13,14 +13,11 @@ enigma = Enigma.new
 
 #require 'pry'; binding.pry
 result = enigma.decrypt(message, ARGV[2], ARGV[3])
-dec_message = result[:decryption]
-key = result[:key]
-date = result[:date]
 
 new_file = File.open(ARGV[1], "w")
-new_file.write(dec_message)
+new_file.write(result[:decryption])
 new_file.close
 
 
 
-puts "Created '#{ARGV[1]}' with the key '#{key}' and date '#{date}'"
+puts "Created '#{ARGV[1]}' with the key '#{result[:key]}' and date '#{result[:date]}'"
