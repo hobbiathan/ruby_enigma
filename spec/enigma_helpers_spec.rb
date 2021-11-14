@@ -1,5 +1,8 @@
 require './lib/enigma'
 require './lib/enigma_helpers'
+require 'simplecov'
+
+SimpleCov.start
 
 RSpec.describe Enigma do
 
