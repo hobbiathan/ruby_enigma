@@ -13,9 +13,7 @@ key = result[:key]
 date = result[:date]
 
 new_file = File.open(ARGV[1], "w")
-new_file.write("Encrypted Message: #{enc_message}\n")
-new_file.write("Encryption Key: #{key}\n")
-new_file.write("Encryption Date: #{date}\n")
+new_file.write(enc_message)
 new_file.close
 
 
