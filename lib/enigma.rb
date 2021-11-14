@@ -14,13 +14,14 @@ class Enigma
     @char_set = ("a".."z").to_a << " "
   end
 
-
+  # Generate key/date info if not provided (helper methods)
   def encrypt(message, key = generate_key, date = generate_date)
 
     # Creates an array of shift values, arguments are 2 new key/offset arrays
     # based off the current input
     shifts_array = assign_shifts(assign_keys(key), assign_offsets(date))
 
+    # Accumulator
     encrypted_message = []
 
     # Turn message into array of characters to iterate through
@@ -81,18 +82,13 @@ class Enigma
   def decrypt(message, key, date = generate_date)
 
     shifts_array = assign_shifts(assign_keys(key), assign_offsets(date))
-
     decrypted_message = []
-
     message_as_array = message.downcase.split('')
 
-  # Definitely not DRY lol
-  # Possibly make into its own method?
     shift_counter = 0
 
     message_as_array.each do |char|
 
-      # Find position of current character in @char_set
       relative_position = @char_set.index(char)
       if !@char_set.include?(char)
         decrypted_message << char
@@ -100,15 +96,11 @@ class Enigma
       else
         case shift_counter
         when 0
-          # Rotate @char_set by value of shifts_array[0]
           shifted = @char_set.rotate(-shifts_array[shift_counter])
-          # Shovel into encrypted_message array
           decrypted_message << shifted[relative_position]
-          #require 'pry'; binding.pry
           shift_counter += 1
 
         when 1
-          # Same as above, but with shifts_array[1]
           shifted = @char_set.rotate(-shifts_array[shift_counter])
           decrypted_message << shifted[relative_position]
 
@@ -124,7 +116,6 @@ class Enigma
           shifted = @char_set.rotate(-shifts_array[shift_counter])
           decrypted_message << shifted[relative_position]
 
-          # Repeat this process until all characters have been gone through
           shift_counter = 0
 
         else
