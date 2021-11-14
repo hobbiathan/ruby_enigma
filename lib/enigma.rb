@@ -5,8 +5,10 @@ class Enigma
 
   # TODO:
   # uhhh
-  # #key_generator
-  # #date_generator
+  # Move #encrypt/#decrypt logic into module maybe
+  # same thing with encrypt.rb/decrypt.rb
+  # maybe start working on #crack
+  # i'm falling asleep it's 12:14am 
 
   attr_reader :char_set
 
