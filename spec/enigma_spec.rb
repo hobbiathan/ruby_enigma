@@ -48,9 +48,9 @@ RSpec.describe Enigma do
     it 'can #encrypt without provided date' do
       expected_hash = {
 
-        encryption: "oefav qdyly",
+        encryption: "sgfazbqdbny",
         key: "02715",
-        date: "111321"
+        date: "111421"
 
       }
 
@@ -63,16 +63,16 @@ RSpec.describe Enigma do
 
         decryption: "hello world",
         key: "02715",
-        date: "111321"
+        date: "111421"
 
       }
-      decrypted_hash = @enigma.decrypt("oefav qdyly", "02715")
+      decrypted_hash = @enigma.decrypt("sgfazbqdbny", "02715")
       expect(decrypted_hash).to eq(expected_hash)
     end
 
     it 'can #encrypt without proided date and key' do
       test_hash = @enigma.encrypt("hello world")
-      expect(test_hash[:date]).to eq("111321")
+      expect(test_hash[:date]).to eq("111421")
       expect(test_hash.keys.size).to eq(3)
       expect(test_hash.values.size).to eq(3)
     end
