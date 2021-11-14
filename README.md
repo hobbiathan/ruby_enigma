@@ -55,5 +55,7 @@ ruby lib/decrypt.rb encrypted.txt decrypted.txt 01612
 
 
 result:
-Created 'decrypted.txt' with key '01612' and date '041703'
+Created 'decrypted.txt' with key '01612' and date '111321'
 ```
+
+Technically I wrote some of this on 11/14/21 but that doesn't really matter you get the idea.
