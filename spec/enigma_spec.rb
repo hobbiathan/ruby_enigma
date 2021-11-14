@@ -46,58 +46,58 @@ RSpec.describe Enigma do
 
   context 'checker methods' do
     it 'returns nil array via #assign_key_check?' do
-      expected_array = [nil, nil, nil, nil]
+      expected_array = []
       expect(@enigma.assign_key_check?).to eq(expected_array)
     end
 
     it 'returns nil array via #assign_offset_check?' do
-      expected_array = [nil, nil, nil, nil]
+      expected_array = []
       expect(@enigma.assign_offset_check?).to eq(expected_array)
     end
 
     it 'returns nil array via #assign_shift_check?' do
-      expected_array = [nil, nil, nil, nil]
+      expected_array = []
       expect(@enigma.assign_shift_check?).to eq(expected_array)
     end
   end
 
-  context 'helper methods' do
-    it 'can #assign_keys(key)' do
-      key = "02715"
-      @enigma.assign_keys(key)
-      expected_array = ["02", "27", "71", "15"]
-
-      expect(@enigma.assign_key_check?).to eq(expected_array)
-    end
-
-    it 'can #assign_offsets(date)' do
-      date = "040895"
-      @enigma.assign_offsets(date)
-      expected_array = ["1", "0", "2", "5"]
-
-      expect(@enigma.assign_offset_check?).to eq(expected_array)
-    end
-
-    it 'can #assign_shifts' do
-      @enigma.encrypt("hello world", "02715", "040895")
-      @enigma.assign_shifts
-      expected_array = ["3", "27", "73", "20"]
-
-      expect(@enigma.assign_shift_check?).to eq(expected_array)
-    end
-
-    # Testing via nested functionality (e.g. within #encrypt)
-    it 'can #return_hash' do
-      expected_hash = {
-
-        encryption: "keder ohulw",
-        key: "02715",
-        date: "040895"
-
-      }
-      expect(@enigma.encrypt("hello world", "02715", "040895")).to eq(expected_hash)
-    end
-  end
+  # context 'helper methods' do
+  #   it 'can #assign_keys(key)' do
+  #     key = "02715"
+  #     @enigma.assign_keys(key)
+  #     expected_array = ["02", "27", "71", "15"]
+  #
+  #     expect(@enigma.assign_key_check?).to eq(expected_array)
+  #   end
+  #
+  #   it 'can #assign_offsets(date)' do
+  #     date = "040895"
+  #     @enigma.assign_offsets(date)
+  #     expected_array = ["1", "0", "2", "5"]
+  #
+  #     expect(@enigma.assign_offset_check?).to eq(expected_array)
+  #   end
+  #
+  #   it 'can #assign_shifts' do
+  #     @enigma.encrypt("hello world", "02715", "040895")
+  #     @enigma.assign_shifts
+  #     expected_array = [3, 27, 73, 20]
+  #
+  #     expect(@enigma.assign_shift_check?).to eq(expected_array)
+  #   end
+  #
+  #   # Testing via nested functionality (e.g. within #encrypt)
+  #   it 'can #return_hash' do
+  #     expected_hash = {
+  #
+  #       encryption: "keder ohulw",
+  #       key: "02715",
+  #       date: "040895"
+  #
+  #     }
+  #     expect(@enigma.encrypt("hello world", "02715", "040895")).to eq(expected_hash)
+  #   end
+  # end
 
   context 'object methods' do
 
