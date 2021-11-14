@@ -138,10 +138,10 @@ class Enigma
     message_as_array = message.split('')
     # require 'pry'; binding.pry
 
-    encrypting = true
+    #encrypting = true
 
     # Definitely not DRY lol
-    while encrypting
+    #while encrypting
 
       shift_counter = 0
 
@@ -191,9 +191,11 @@ class Enigma
       end
 
       encrypting = false
+      encrypted_message.join
+
     end
 
-    encrypted_message.join
+    #encrypted_message.join
 
   end
-end
+#end
