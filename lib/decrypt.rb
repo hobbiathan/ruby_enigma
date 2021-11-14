@@ -12,7 +12,7 @@ message = file.read.tr("\n", "") # Remove new line at end of string
 enigma = Enigma.new
 
 #require 'pry'; binding.pry
-result = enigma.decrypt(message, ARGV[2])
+result = enigma.decrypt(message, ARGV[2], ARGV[3])
 dec_message = result[:decryption]
 key = result[:key]
 date = result[:date]
