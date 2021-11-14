@@ -33,7 +33,6 @@ class Enigma
 
     # Creates an array of shift values, arguments are 2 new key/offset arrays
     # based off the current input
-    #require 'pry'; binding.pry
     shifts_array = assign_shifts(assign_keys(key), assign_offsets(date))
 
       # Turn message into array of characters to iterate through
@@ -41,10 +40,6 @@ class Enigma
 
     encrypted_message = encrypt_logic(message_array, shifts_array, @char_set)
     # returns encrypted_message
-
-  # Definitely not DRY lol
-  # Possibly make into its own method?
-
 
     return_hash(encrypted_message.join, key, date, 'enc')
   end
@@ -62,7 +57,6 @@ class Enigma
 
     decrypted_message = decrypt_logic(message_array, shifts_array, @char_set)
     return_hash(decrypted_message.join, key, date, 'dec')
-
   end
 
 

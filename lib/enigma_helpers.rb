@@ -65,6 +65,8 @@ module EnigmaHelpers
       }
   end
 
+  # Still need to figure out how to refactor the below 
+
   def encrypt_logic(message_arr, shifts_arr, char_set)
     encrypted_message = []
     shift_counter = 0
