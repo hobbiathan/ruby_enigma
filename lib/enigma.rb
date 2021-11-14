@@ -114,6 +114,17 @@ class Enigma
     @shift_d = @shift_d.to_s
   end
 
+  def return_hash(encrypted_message)
+
+    enc_hash = {
+      encryption: encrypted_message,
+      key: @key,
+      date: @offsets
+
+    }
+
+  end
+
 
   # Actual Enigma functionality methods
 
@@ -128,21 +139,11 @@ class Enigma
       assign_offsets(date)
       assign_shifts
 
-    # Nested loop with a counter?
-    # When counter = condition, reset counter
-    # counter == current shift
-    # store shifts in an array then? (fuck)
-
     encrypted_message = []
 
     message_as_array = message.split('')
-    # require 'pry'; binding.pry
-
-    #encrypting = true
 
     # Definitely not DRY lol
-    #while encrypting
-
       shift_counter = 0
 
       message_as_array.each do |char|
@@ -190,12 +191,9 @@ class Enigma
         end
       end
 
-      encrypting = false
-      encrypted_message.join
+      return_hash(encrypted_message.join)
 
     end
 
-    #encrypted_message.join
 
   end
-#end
