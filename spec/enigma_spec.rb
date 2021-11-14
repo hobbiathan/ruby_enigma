@@ -81,6 +81,17 @@ RSpec.describe Enigma do
 
       expect(@enigma.assign_shift_check?).to eq(expected_array)
     end
+
+    it 'can #return_hash' do
+      expected_hash = {
+
+        encryption: "keder ohulw",
+        key: "02715",
+        date: "040895"
+
+      }
+      expect(@enigma.return_hash).to eq(expected_hash)
+    end
   end
 
   context 'object methods' do
@@ -100,8 +111,7 @@ RSpec.describe Enigma do
       expect(@enigma.offsets).to eq ("040895")
     end
 
-    # Incomplete test
-    xit 'can return encrypted message' do
+    it 'can return encrypted message' do
       expect(@enigma.encrypt("hello world", "02715", "040895")).to eq("keder ohulw")
     end
 
