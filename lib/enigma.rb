@@ -19,16 +19,19 @@ class Enigma
     @char_set = ("a".."z").to_a << " "
 
     # lol
+    # keys_array[]
     key_a = nil
     key_b = nil
     key_c = nil
     key_d = nil
 
+    # offsets_array[]
     offset_a = nil
     offset_b = nil
     offset_c = nil
     offset_d = nil
 
+    # shifts_array[]
     shift_a = nil
     shift_b = nil
     shift_c = nil
@@ -40,6 +43,8 @@ class Enigma
   # The first two just check to see if our attributes initialize as nil
   # Probably make into their own module later
   # Messy but better than creating 4 unnecessary attr_readers
+
+  # key_setup?(@keys_array)
   def key_setup?
     if @key_a == @key_b &&
        @key_b == @key_c &&
@@ -52,6 +57,7 @@ class Enigma
   end
 
   # if statement is pretty long
+  # offset_setup?(@offsets_array)
   def offset_setup?
     if @offset_a == @offset_b &&
        @offset_b == @offset_c &&
@@ -62,6 +68,18 @@ class Enigma
       false
     end
   end
+
+  # shifts_setup?(@shifts_array)
+  def shifts_setup?
+    if @shift_a == @shift_b &&
+       @shift_b == @shift_c &&
+       @shift_c == @shift_d &&
+       @shift_d == nil
+       true
+     else
+       false
+     end
+   end
 
   # Return our keys as an array to use as a check
   # for our #encrypt method functionality
@@ -114,6 +132,8 @@ class Enigma
     @shift_d = @shift_d.to_s
   end
 
+
+  # Module - #return_hash(encrypted_message, @key, @offsets)
   def return_hash(encrypted_message)
 
     enc_hash = {
