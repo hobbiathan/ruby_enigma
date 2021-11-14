@@ -7,29 +7,31 @@ RSpec.describe Enigma do
     @enigma = Enigma.new
   end
 
-  it 'can #assign_keys(key) via #encrypt' do
+  it 'can #assign_keys(key)' do
     key = "02715"
-    @enigma.assign_keys(key)
-    @enigma.encrypt("hello world", "02715", "040895")
+    expected = @enigma.assign_keys(key)
+
     expected_array = ["02", "27", "71", "15"]
 
-    expect(@enigma.assign_key_check?).to eq(expected_array)
+    expect(expected).to eq(expected_array)
   end
 
-  it 'can #assign_offsets(date) via #encrypt' do
+  it 'can #assign_offsets(date)' do
     date = "040895"
-    #require 'pry'; binding.pry
-    @enigma.encrypt("hello world", "02715", "040895")
+    expected = @enigma.assign_offsets(date)
     expected_array = ["1", "0", "2", "5"]
 
-    expect(@enigma.assign_offset_check?).to eq(expected_array)
+    expect(expected).to eq(expected_array)
   end
 
   it 'can #assign_shifts via #encrypt' do
-    @enigma.encrypt("hello world", "02715", "040895")
+    keys_arr = @enigma.assign_keys("02715")
+    offsets_arr = @enigma.assign_offsets("040895")
+
+    expected = @enigma.assign_shifts(keys_arr, offsets_arr)
     expected_array = [3, 27, 73, 20]
 
-    expect(@enigma.assign_shift_check?).to eq(expected_array)
+    expect(expected).to eq(expected_array)
   end
 
   # Testing via nested functionality (e.g. within #encrypt)
