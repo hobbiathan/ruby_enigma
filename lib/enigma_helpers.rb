@@ -23,26 +23,28 @@ module EnigmaHelpers
     end
 
     # Module - #return_hash(encrypted_message, @key, @offsets)
-    def return_hash(message, key, date, state)
 
+    # curr_ prefix means whatever was provided (current)
+    def return_hash(curr_message, curr_key, curr_date, state)
+      current_state = nil
       if state == 'enc'
-        enc_hash = {
-          encryption: message,
-          key: key,
-          date: date
-
-        }
-
+        current_state = :encryption # Change 1st key value depending on state
       elsif state == 'dec'
-        dec_hash = {
-          decryption: message,
-          key: key,
-          date: date
-
-        }
+        current_state = :decryption
       else
         puts "Invalid state."
       end
+      
+        # This way we don't have to write two separate return hashes for #encrypt
+        # and #decrypt
+
+        hash = {
+
+          current_state => curr_message,
+          key: curr_key,
+          date: curr_date
+
+        }
 
     end
 end
