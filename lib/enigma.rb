@@ -22,7 +22,7 @@ class Enigma
   # work properly, and therein we need our first two if checks
 
   # Strange, since it seemed to have been working earlier
-  def encrypt(message, key, date)
+  def encrypt(message, key = generate_key, date = generate_date)
     if key == nil
       key = generate_key
     end
@@ -47,7 +47,7 @@ class Enigma
 
   # Esentially the exact same thing as #encrypt, but rotate
   # backwards
-  def decrypt(message, key, date)
+  def decrypt(message, key, date = generate_date)
     if date == nil
       date = generate_date
     end
