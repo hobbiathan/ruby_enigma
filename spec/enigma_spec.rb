@@ -15,7 +15,7 @@ RSpec.describe Enigma do
     end
 
     it 'initializes empty char_set' do
-      expected_array = ["a".."z"].to_a << " "
+      expected_array = ("a".."z").to_a << " "
       expect(@enigma.char_set).to eq(expected_array)
     end
 
@@ -98,6 +98,11 @@ RSpec.describe Enigma do
     it 'can store date via #encrypt' do
       @enigma.encrypt("hello world", "02715", "111321")
       expect(@enigma.offsets).to eq ("111321")
+    end
+
+    # Incomplete test
+    it 'can return encrypted message' do
+      expect(@enigma.encrypt("hello world", "02715", "111321")).to eq("keder ohulw")
     end
 
 

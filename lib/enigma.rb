@@ -16,7 +16,7 @@ class Enigma
     @message = nil
     @key = nil
     @offsets = nil
-    @char_set = ["a".."z"].to_a << " "
+    @char_set = ("a".."z").to_a << " "
 
     # lol
     key_a = nil
@@ -128,12 +128,50 @@ class Enigma
     assign_offsets(date)
     assign_shifts
 
-    # Likely going to need a nested loop for actual encryption
+  # Nested loop with a counter?
+  # When counter = condition, reset counter
+  # counter == current shift
+  # store shifts in an array then? (fuck)
 
-    #
+  encrypted_message = []
+
+  message_as_array = message.split('')
+  # require 'pry'; binding.pry
+
+  encrypting = true
+
+  while encrypting
+
+    shift_counter = 0
+
+    message_as_array.each do |char|
+
+      require 'pry'; binding.pry
+      case shift_counter
+      when 0
+        @char_set.index(char)
 
 
+        shift_counter += 1
+
+      when 1
+
+        shift_counter += 1
+
+      when 2
+        shift_counter += 1
+
+
+      when 3
+        shift_counter = 0
+
+
+      else
+        puts "lol"
+      end
+
+    end
   end
 
-
+end
 end
