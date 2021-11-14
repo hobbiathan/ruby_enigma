@@ -1,5 +1,9 @@
 module EnigmaHelpers
 
+    def generate_key
+      rand.to_s[2..6]
+    end
+
     # Returns 4 key values from originally provided key
     def assign_keys(key)
       [key[0..1], key[1..2], key[2..3], key[3..4]]
@@ -34,7 +38,7 @@ module EnigmaHelpers
       else
         puts "Invalid state."
       end
-      
+
         # This way we don't have to write two separate return hashes for #encrypt
         # and #decrypt
 
