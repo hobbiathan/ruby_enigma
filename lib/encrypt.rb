@@ -7,7 +7,7 @@ message = file.read.tr("\n", "") # Remove new line at end of string
 enigma = Enigma.new
 
 #require 'pry'; binding.pry
-result = enigma.encrypt(message)
+result = enigma.encrypt(message, ARGV[2], ARGV[3])
 enc_message = result[:encryption]
 key = result[:key]
 date = result[:date]
@@ -18,4 +18,4 @@ new_file.close
 
 
 
-puts "Created '#{ARGV[1]}' with the key #{key} and date #{date}"
+puts "Created '#{ARGV[1]}' with the key '#{key}' and date '#{date}'"
