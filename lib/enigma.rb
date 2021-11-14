@@ -8,7 +8,7 @@ class Enigma
   # Move #encrypt/#decrypt logic into module maybe
   # same thing with encrypt.rb/decrypt.rb
   # maybe start working on #crack
-  # i'm falling asleep it's 12:14am 
+  # i'm falling asleep it's 12:14am
 
   attr_reader :char_set
 
@@ -16,11 +16,24 @@ class Enigma
     @char_set = ("a".."z").to_a << " "
   end
 
-  # Generate key/date info if not provided (helper methods)
-  def encrypt(message, key = generate_key, date = generate_date)
+  # Not passing an argument in CLI returns as nil
+  # which is technically still a return value, ergo why
+  # assigning a default value within the parameter doesn't
+  # work properly, and therein we need our first two if checks
+
+  # Strange, since it seemed to have been working earlier
+  def encrypt(message, key, date)
+    if key == nil
+      key = generate_key
+    end
+
+    if date == nil
+      date = generate_date
+    end
 
     # Creates an array of shift values, arguments are 2 new key/offset arrays
     # based off the current input
+    #require 'pry'; binding.pry
     shifts_array = assign_shifts(assign_keys(key), assign_offsets(date))
 
     # Accumulator
@@ -40,7 +53,7 @@ class Enigma
 
       if !@char_set.include?(char)
         encrypted_message << char
-        shift_counter += 1
+        #shift_counter += 1
       else
         case shift_counter
         when 0
@@ -81,7 +94,10 @@ class Enigma
 
   # Esentially the exact same thing as #encrypt, but rotate
   # backwards
-  def decrypt(message, key, date = generate_date)
+  def decrypt(message, key, date)
+    if date == nil
+      date = generate_date
+    end
 
     shifts_array = assign_shifts(assign_keys(key), assign_offsets(date))
     decrypted_message = []
@@ -94,7 +110,7 @@ class Enigma
       relative_position = @char_set.index(char)
       if !@char_set.include?(char)
         decrypted_message << char
-        shift_counter += 1
+        #shift_counter += 1
       else
         case shift_counter
         when 0
