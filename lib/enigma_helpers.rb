@@ -1,7 +1,21 @@
+require 'date'
+
 module EnigmaHelpers
 
     def generate_key
       rand.to_s[2..6]
+    end
+
+    def generate_date
+      current_date = Date.today.to_s
+
+      formatted = []
+
+      formatted << current_date[5..6]
+      formatted << current_date[-2..-1]
+      formatted << current_date[2..3]
+
+      formatted.join
     end
 
     # Returns 4 key values from originally provided key
