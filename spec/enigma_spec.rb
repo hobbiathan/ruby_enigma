@@ -82,6 +82,7 @@ RSpec.describe Enigma do
       expect(@enigma.assign_shift_check?).to eq(expected_array)
     end
 
+    # Testing via nested functionality
     it 'can #return_hash' do
       expected_hash = {
 
@@ -90,7 +91,7 @@ RSpec.describe Enigma do
         date: "040895"
 
       }
-      expect(@enigma.return_hash).to eq(expected_hash)
+      expect(@enigma.encrypt("hello world", "02715", "040895")).to eq(expected_hash)
     end
   end
 
@@ -112,7 +113,8 @@ RSpec.describe Enigma do
     end
 
     it 'can return encrypted message' do
-      expect(@enigma.encrypt("hello world", "02715", "040895")).to eq("keder ohulw")
+      encrypted_hash = @enigma.encrypt("hello world", "02715", "040895")
+      expect(encrypted_hash[:encryption]).to eq("keder ohulw")
     end
 
 
