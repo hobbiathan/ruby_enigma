@@ -120,58 +120,80 @@ class Enigma
   # Elementary encrypt method, will figure out encryption
   # first, then move to adding other required functional elements
   def encrypt(message, key, date)
-    @message = message.downcase
-    @key = key # Possible we don't even need this
-    @offsets = date # Or this
+      @message = message.downcase
+      @key = key # Possible we don't even need this
+      @offsets = date # Or this
 
-    assign_keys(key)
-    assign_offsets(date)
-    assign_shifts
+      assign_keys(key)
+      assign_offsets(date)
+      assign_shifts
 
-  # Nested loop with a counter?
-  # When counter = condition, reset counter
-  # counter == current shift
-  # store shifts in an array then? (fuck)
+    # Nested loop with a counter?
+    # When counter = condition, reset counter
+    # counter == current shift
+    # store shifts in an array then? (fuck)
 
-  encrypted_message = []
+    encrypted_message = []
 
-  message_as_array = message.split('')
-  # require 'pry'; binding.pry
+    message_as_array = message.split('')
+    # require 'pry'; binding.pry
 
-  encrypting = true
+    encrypting = true
 
-  while encrypting
+    # Definitely not DRY lol
+    while encrypting
 
-    shift_counter = 0
+      shift_counter = 0
 
-    message_as_array.each do |char|
+      message_as_array.each do |char|
 
-      require 'pry'; binding.pry
-      case shift_counter
-      when 0
-        @char_set.index(char)
+        case shift_counter
+        when 0
+          relative_position = @char_set.index(char)
+          shifted = @char_set.rotate(@shift_a.to_i)
+
+          encrypted_message << shifted[relative_position]
+
+          #require 'pry'; binding.pry
+          shift_counter += 1
+
+        when 1
+          relative_position = @char_set.index(char)
+          shifted = @char_set.rotate(@shift_b.to_i)
+
+          encrypted_message << shifted[relative_position]
+
+          #require 'pry'; binding.pry
+
+          shift_counter += 1
+
+        when 2
+          relative_position = @char_set.index(char)
+          shifted = @char_set.rotate(@shift_c.to_i)
+
+          encrypted_message << shifted[relative_position]
+
+          shift_counter += 1
 
 
-        shift_counter += 1
+        when 3
+          relative_position = @char_set.index(char)
+          shifted = @char_set.rotate(@shift_d.to_i)
 
-      when 1
+          encrypted_message << shifted[relative_position]
 
-        shift_counter += 1
-
-      when 2
-        shift_counter += 1
-
-
-      when 3
-        shift_counter = 0
+          shift_counter = 0
 
 
-      else
-        puts "lol"
+        else
+          puts "lol"
+        end
       end
 
+      encrypting = false
     end
-  end
 
-end
+    encrypted_message.join
+
+  end
 end
