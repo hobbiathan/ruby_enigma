@@ -34,7 +34,7 @@ RSpec.describe Enigma do
     expect(expected).to eq(expected_array)
   end
 
-  it 'can #assign_shifts via #encrypt' do
+  it 'can #assign_shifts' do
     keys_arr = @enigma.assign_keys("02715")
     offsets_arr = @enigma.assign_offsets("040895")
 
@@ -46,14 +46,22 @@ RSpec.describe Enigma do
 
   # Testing via nested functionality (e.g. within #encrypt)
   it 'can #return_hash' do
-    expected_hash = {
+    expected_hash_one = {
 
       encryption: "keder ohulw",
       key: "02715",
       date: "040895"
 
     }
-    expect(@enigma.encrypt("hello world", "02715", "040895")).to eq(expected_hash)
+    expected_hash_two = {
+
+      decryption: "hello world",
+      key: "02715",
+      date: "040895"
+
+    }
+    expect(@enigma.encrypt("hello world", "02715", "040895")).to eq(expected_hash_one)
+    expect(@enigma.decrypt("keder ohulw", "02715", "040895")).to eq(expected_hash_two)
   end
 
 
