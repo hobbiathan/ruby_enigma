@@ -38,6 +38,10 @@ RSpec.describe Enigma do
     it 'initializes nil a..d offsets via #offset_setup?' do
       expect(@enigma.offset_setup?).to be true
     end
+
+    it 'initializes nil a..d shifts via #shifts_setup?' do
+      expect(@enigma.shifts_setup?).to be true
+    end
   end
 
   context 'checker methods' do
@@ -82,7 +86,7 @@ RSpec.describe Enigma do
       expect(@enigma.assign_shift_check?).to eq(expected_array)
     end
 
-    # Testing via nested functionality
+    # Testing via nested functionality (e.g. within #encrypt)
     it 'can #return_hash' do
       expected_hash = {
 
