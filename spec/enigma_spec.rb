@@ -17,22 +17,64 @@ RSpec.describe Enigma do
 
   end
 
-  context 'object methods' do
+  context '#encrypt/#decrypt' do
 
-    it 'can #encrypted a message' do
+    it 'can #encrypt and return an appropriate hash' do
+      expected_hash = {
+
+        encryption: "keder ohulw",
+        key: "02715",
+        date: "040895"
+
+      }
+
       encrypted_hash = @enigma.encrypt("hello world", "02715", "040895")
-      expect(encrypted_hash[:encryption]).to eq("keder ohulw")
+      expect(encrypted_hash).to eq(expected_hash)
     end
 
-    it 'can #decrypt a message' do
-      expected_hash = @enigma.decrypt("keder ohulw", "02715", "040895")
-      expect(expected_hash[:decryption]).to eq("hello world")
+    it 'can #decrypt and return an appropriate hash' do
+      expected_hash = {
+
+        decryption: "hello world",
+        key: "02715",
+        date: "040895"
+
+      }
+
+      decrypted_hash = @enigma.decrypt("keder ohulw", "02715", "040895")
+      expect(decrypted_hash).to eq(expected_hash)
     end
 
-    it 'can #encrypt with no provided key or date' do
-      my_hash = @enigma.encrypt("hello world")
-      expect(my_hash.keys.size).to eq(3)
-      expect(my_hash.values.size).to eq(3)
+    it 'can #encrypt without provided date' do
+      expected_hash = {
+
+        encryption: "oefav qdyly",
+        key: "02715",
+        date: "111321"
+
+      }
+
+      encrypted_hash = @enigma.encrypt("hello world", "02715")
+      expect(encrypted_hash).to eq(expected_hash)
+    end
+
+    it 'can #decrypt without provided date' do
+      expected_hash = {
+
+        decryption: "hello world",
+        key: "02715",
+        date: "111321"
+
+      }
+      decrypted_hash = @enigma.decrypt("oefav qdyly", "02715")
+      expect(decrypted_hash).to eq(expected_hash)
+    end
+
+    it 'can #encrypt without proided date and key' do
+      test_hash = @enigma.encrypt("hello world")
+      expect(test_hash[:date]).to eq("111321")
+      expect(test_hash.keys.size).to eq(3)
+      expect(test_hash.values.size).to eq(3)
     end
 
   end
