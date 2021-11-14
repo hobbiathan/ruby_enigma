@@ -13,7 +13,7 @@ echo "hello world" > mouse.txt
 
 The `encrypt.rb` file has four CLI arguments:
 
-the `target file` to read from, `file` to write to, a `key` and `date`, as shown in the following:
+The `target file` to read from, `file` to write to, a `key` and `date`, as shown in the following:
 
 ```
                     target      file          key   date
